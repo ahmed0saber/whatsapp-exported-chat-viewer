@@ -4,10 +4,35 @@
     box-sizing: border-box;
     outline: none;
     position: relative;
-    font-family: sans-serif;
+    font-family: "Bitter", "Cairo", sans-serif;
 }
-body{
-    /* direction: rtl; */
+.controls-container{
+    padding: 10px;
+    background-color: #f7f7f7;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    box-shadow: 0px 0px 2px 2px #21212121;
+}
+.search-box{
+    margin: 10px 0 0 0;
+}
+.search-box input{
+    width: 100%;
+    padding: 8px 0px 8px 34px;
+    font-size: 16px;
+    border: 2px solid #21212121;
+}
+.search-box svg{
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    width: 20px;
+    opacity: 0.5;
+}
+.chat-container{
+    margin: 10px 0;
 }
 .message{
     display: flex;
@@ -24,18 +49,21 @@ body{
     padding: 6px;
 }
 .message .sender{
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: bold;
 }
 .message .content{
     font-size: 16px;
     margin: 4px 0;
     line-height: 20px;
     word-break: break-word;
-    direction: rtl; /* if first letter is arabic do that, change it if first letter is english */
+    /* direction: rtl; */
 }
 .message .date{
     display: block;
     text-align: right;
+    font-size: 14px;
+    opacity: 0.8;
 }
 .message.myMessage{
     justify-content: flex-end;

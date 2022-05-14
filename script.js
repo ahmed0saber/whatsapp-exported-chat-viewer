@@ -52,7 +52,6 @@ const getDataFromMessages = (allMessages) => {
             }
         }
     }
-    console.log(messagesData)
     buildChat(messagesData)
 }
 
@@ -70,7 +69,7 @@ const buildChat = (modifiedMessages) => {
         <div class="${messagesClass}">
             <div>
                 <p class="sender">${modifiedMessages[i].sender}</p>
-                <p class="content">${modifiedMessages[i].content}</p>
+                <p class="content" dir="auto">${modifiedMessages[i].content}</p>
                 <p class="date">${modifiedMessages[i].date}</p>
             </div>
         </div>
