@@ -6,14 +6,18 @@
     position: relative;
     font-family: "Bitter", "Cairo", sans-serif;
 }
+body{
+    background-color: #292F3F;
+}
 .controls-container{
     padding: 10px;
-    background-color: #f7f7f7;
+    background-color: #42495a;
+    color: #F8F4E3;
     position: sticky;
     top: 0;
     left: 0;
     z-index: 2;
-    box-shadow: 0px 0px 2px 2px #21212121;
+    box-shadow: 0px 0px 2px 2px #21212184;
 }
 .search-box{
     margin: 10px 0 0 0;
@@ -23,6 +27,17 @@
     padding: 8px 0px 8px 34px;
     font-size: 16px;
     border: 2px solid #21212121;
+    background-color: #666a77;
+    color: #F8F4E3;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+.search-box input::placeholder{
+    color: #F8F4E3;
+    opacity: 0.7;
 }
 .search-box svg{
     position: absolute;
@@ -32,7 +47,7 @@
     opacity: 0.5;
 }
 .chat-container{
-    margin: 10px 0;
+    margin: 5px 0;
 }
 .message{
     display: flex;
@@ -44,33 +59,43 @@
 }
 .message div{
     max-width: 70%;
-    min-width: 40%;
     box-shadow: 0px 0px 2px 2px #21212121;
     padding: 6px;
+    background-color: #42495a;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
 }
 .message .sender{
     font-size: 16px;
-    font-weight: bold;
+    color: #F8F4E3;
 }
 .message .content{
     font-size: 16px;
     margin: 4px 0;
     line-height: 20px;
     word-break: break-word;
-    /* direction: rtl; */
+    color: #F8F4E3;
 }
 .message .date{
     display: block;
     text-align: right;
     font-size: 14px;
     opacity: 0.8;
+    color: #F8F4E3;
 }
 .message.myMessage{
     justify-content: flex-end;
+}
+.message.myMessage div{
+    background-color: #9433c5;
 }
 .message.undefined{
     justify-content: center;
 }
 .message.undefined div{
     max-width: 100%;
+    width: 100%;
 }
