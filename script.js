@@ -31,7 +31,7 @@ const getDataFromMessages = (allMessages) => {
     for(let i=0; i<allMessages.length; i++){
         for(let j=0; j<allMessages[i].length; j++){
             if(dataNumber == 0 && allMessages[i][j] == "-"){
-                if(currentData.slice(0, 10).match(/^\d{2}([./-])\d{2}\1\d{4}$/)){
+                if(currentData.slice(0, 10).match(/^\d{1,2}([./-])\d{1,2}\1\d{4}$/)){
                     messageDate = currentData.slice(0, -1)
                     currentData = ""
                     dataNumber++
