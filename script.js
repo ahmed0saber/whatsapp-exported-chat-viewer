@@ -1,3 +1,9 @@
+let firstSender
+
+const pickFile = () => {
+    document.getElementsByClassName("filePicker")[0].click()
+}
+
 const openFile = (event) => {
     var input = event.target
     var reader = new FileReader()
@@ -20,6 +26,7 @@ const convertIntoMessages = (someString) => {
 }
 
 const getDataFromMessages = (allMessages) => {
+    firstSender = ""
     let messagesData = [], messageDate, messageSender, messageContent, currentData = "", dataNumber = 0, currentMessage
     for(let i=0; i<allMessages.length; i++){
         for(let j=0; j<allMessages[i].length; j++){
@@ -33,6 +40,9 @@ const getDataFromMessages = (allMessages) => {
                 messageSender = currentData.substring(1)
                 currentData = ""
                 dataNumber++
+                if(firstSender == ""){
+                    firstSender = messageSender
+                }
             }else if(allMessages[i][j] == "\n"){
                 if(currentData[0] == " "){
                     messageContent = currentData.substring(1)
@@ -57,8 +67,10 @@ const getDataFromMessages = (allMessages) => {
 
 const buildChat = (modifiedMessages) => {
     let messagesClass = ""
+    document.getElementsByClassName("chat-container")[0].innerHTML = ""
+    document.getElementsByClassName("chooseFirst")[0].style.display = "none"
     for(let i=0; i<modifiedMessages.length; i++){
-        if(modifiedMessages[i].sender == "ahmed0saber"){
+        if(modifiedMessages[i].sender == firstSender){
             messagesClass = "message myMessage"
         }else if(modifiedMessages[i].sender == undefined){
             messagesClass = "message undefined"
@@ -78,24 +90,37 @@ const buildChat = (modifiedMessages) => {
 }
 
 function searchMessages(){
-    var a, txtValue
+    var searchable, txtValue
     var input = document.getElementsByClassName("searchInput")[0]
     var filter = input.value.toUpperCase()
-    var ul = document.getElementsByClassName("chat-container")[0]
-    var li = ul.getElementsByClassName("message")
-    for(let i=0; i<li.length; i++){
-        a = li[i].getElementsByTagName("p")[1]
-        txtValue = a.textContent || a.innerText
+    var container = document.getElementsByClassName("chat-container")[0]
+    var items = container.getElementsByClassName("message")
+    for(let i=0; i<items.length; i++){
+        searchable = items[i].getElementsByClassName("content")[0]
+        txtValue = searchable.textContent || searchable.innerText
         if(txtValue.toUpperCase().indexOf(filter) > -1){
-            li[i].classList.remove("removed")
+            items[i].classList.remove("removed")
             setTimeout(() => {
-                li[i].classList.remove("filtered")
+                items[i].classList.remove("filtered")
             },200)
         }else{
-            li[i].classList.add("filtered")
+            items[i].classList.add("filtered")
             setTimeout(() => {
-                li[i].classList.add("removed")
+                items[i].classList.add("removed")
             },200)
         }
     }
+    setTimeout(() => {
+        let filteredMessages = 0
+        for(let i=0; i<items.length; i++){
+            if(items[i].classList.contains("removed") || items[i].classList.contains("filtered")){
+                filteredMessages++
+            }
+        }
+        if(filteredMessages == items.length && items.length > 0){
+            document.getElementsByClassName("noMessage")[0].style.display = "flex"
+        }else{
+            document.getElementsByClassName("noMessage")[0].style.display = "none"
+        }
+    }, 200)
 }

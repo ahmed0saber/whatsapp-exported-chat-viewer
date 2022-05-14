@@ -6,9 +6,8 @@
     position: relative;
     font-family: "Bitter", "Cairo", sans-serif;
 }
-body, html{
+body{
     background-color: #292F3F;
-    overflow-x: hidden;
 }
 .controls-container{
     padding: 10px;
@@ -19,6 +18,34 @@ body, html{
     left: 0;
     z-index: 2;
     box-shadow: 0px 0px 2px 2px #21212184;
+}
+.filePicker{
+    display: none;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.filePickerClicker{
+    padding: 8px 20px;
+    font-size: 16px;
+    background-color: #9433c5;
+    color: #F8F4E3;
+    border: none;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+.developedBy{
+    color: #F8F4E3;
+}
+.developedBy a{
+    color: #d484ff;
+    text-decoration: none;
 }
 .search-box{
     margin: 10px 0 0 0;
@@ -60,16 +87,13 @@ body, html{
     transition-duration: 0.2s;
 }
 .message.filtered{
-    transform: translateX(100%);
-    -webkit-transform: translateX(100%);
-    -moz-transform: translateX(100%);
-    -ms-transform: translateX(100%);
-    -o-transform: translateX(100%);
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
 }
 .message.removed{
-    /* height: 0;
-    overflow: hidden;
-    padding: 0; */
     display: none;
 }
 .message div{
@@ -113,4 +137,18 @@ body, html{
 .message.undefined div{
     max-width: 100%;
     width: 100%;
+}
+.chooseFirst, .noMessage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+.chooseFirst p, .noMessage p{
+    color: #F8F4E3;
+    opacity: 0.8;
+    font-size: 18px;
+}
+.noMessage{
+    display: none;
 }
