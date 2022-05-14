@@ -6,8 +6,9 @@
     position: relative;
     font-family: "Bitter", "Cairo", sans-serif;
 }
-body{
+body, html{
     background-color: #292F3F;
+    overflow-x: hidden;
 }
 .controls-container{
     padding: 10px;
@@ -56,6 +57,20 @@ body{
     width: fit-content;
     width: 100%;
     padding: 5px 10px;
+    transition-duration: 0.2s;
+}
+.message.filtered{
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+}
+.message.removed{
+    /* height: 0;
+    overflow: hidden;
+    padding: 0; */
+    display: none;
 }
 .message div{
     max-width: 70%;

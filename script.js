@@ -76,3 +76,26 @@ const buildChat = (modifiedMessages) => {
         `
     }
 }
+
+function searchMessages(){
+    var a, txtValue
+    var input = document.getElementsByClassName("searchInput")[0]
+    var filter = input.value.toUpperCase()
+    var ul = document.getElementsByClassName("chat-container")[0]
+    var li = ul.getElementsByClassName("message")
+    for(let i=0; i<li.length; i++){
+        a = li[i].getElementsByTagName("p")[1]
+        txtValue = a.textContent || a.innerText
+        if(txtValue.toUpperCase().indexOf(filter) > -1){
+            li[i].classList.remove("removed")
+            setTimeout(() => {
+                li[i].classList.remove("filtered")
+            },200)
+        }else{
+            li[i].classList.add("filtered")
+            setTimeout(() => {
+                li[i].classList.add("removed")
+            },200)
+        }
+    }
+}
